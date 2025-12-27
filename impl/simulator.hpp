@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 #include <random>
-#include <constants.hpp>
+#include "constants.hpp"
 #include "./water.hpp"
 #include "./soap.hpp"
 #include "./step_calculator.hpp"
@@ -59,16 +59,16 @@ void Simulator::write_log(std::ofstream& out) {
 }
 
 void Simulator::init_waters() {
-    std::uniform_real_distribution<double> dist(-step_calclator::BOX_SIZE-10.0, step_calclator::BOX_SIZE-10.0);
+    std::uniform_real_distribution<double> dist(-step_calculator::BOX_SIZE-10.0, step_calculator::BOX_SIZE-10.0);
     for (int water_idx = 0; water_idx < 100; ++water_idx) {
-        waters.push_back(Water(dist(random_engine)), dist(random_engine));
+        waters.push_back(Water(dist(random_engine), dist(random_engine)));
     }
 }
 
 void Simulator::init_soaps() {
-    std::uniform_real_distribution<double> dist(-step_calclator::BOX_SIZE-10.0, step_calclator::BOX_SIZE-10.0);
+    std::uniform_real_distribution<double> dist(-step_calculator::BOX_SIZE-10.0, step_calculator::BOX_SIZE-10.0);
     for (int soap_idx = 0; soap_idx < 100; ++soap_idx) {
-        soaps.push_back(Soap(dist(random_engine)), dist(random_engine));
+        soaps.push_back(Soap(dist(random_engine), dist(random_engine)));
     }
 }
 
