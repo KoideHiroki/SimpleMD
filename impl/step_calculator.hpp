@@ -1,0 +1,6 @@
+#ifndef STEP_CALCULATOR_HPP
+#define STEP_CALCULATOR_HPP
+
+
+
+#endif
