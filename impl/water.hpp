@@ -11,7 +11,7 @@ public:
 };
 
 Water::Water(const double init_x, const double init_y, const double init_z)
-    : atom(init_x, init_y, init_z)
+    : atom(init_x, init_y, init_z, water::WEIGHT)
 {}
 } // smd
 

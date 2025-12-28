@@ -13,7 +13,7 @@ public:
 };
 
 Soap::Soap(const double init_x, const double init_y, const double init_z)
-    : head(init_x-soap::MOL_LEN/2.0, init_y, init_z), tail(init_x+soap::MOL_LEN/2.0, init_y, init_z)
+    : head(init_x-soap::SPRING_R0/2.0, init_y, init_z, soap::HEAD_WEIGHT), tail(init_x+soap::SPRING_R0/2.0, init_y, init_z, soap::TAIL_WEIGHT)
 {}
 
 } // smd

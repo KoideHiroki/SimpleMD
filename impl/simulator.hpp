@@ -26,10 +26,11 @@ private:
     StepCalculator step_calculator;
 
     std::mt19937 random_engine;
+    std::uniform_real_distribution<double> init_coord_dist;
 };
 
 Simulator::Simulator(const std::uint32_t seed)
-    : random_engine(seed)
+    : random_engine(seed), init_coord_dist(-step_calculator::BOX_SIZE-10.0, step_calculator::BOX_SIZE-10.0)
 {
     init_waters();
     init_soaps();
@@ -59,16 +60,14 @@ void Simulator::write_log(std::ofstream& out) {
 }
 
 void Simulator::init_waters() {
-    std::uniform_real_distribution<double> dist(-step_calculator::BOX_SIZE-10.0, step_calculator::BOX_SIZE-10.0);
     for (int water_idx = 0; water_idx < 100; ++water_idx) {
-        waters.push_back(Water(dist(random_engine), dist(random_engine), dist(random_engine)));
+        waters.push_back(Water(init_coord_dist(random_engine), init_coord_dist(random_engine), init_coord_dist(random_engine)));
     }
 }
 
 void Simulator::init_soaps() {
-    std::uniform_real_distribution<double> dist(-step_calculator::BOX_SIZE-10.0, step_calculator::BOX_SIZE-10.0);
     for (int soap_idx = 0; soap_idx < 100; ++soap_idx) {
-        soaps.push_back(Soap(dist(random_engine), dist(random_engine), dist(random_engine)));
+        soaps.push_back(Soap(init_coord_dist(random_engine), init_coord_dist(random_engine), init_coord_dist(random_engine)));
     }
 }
 

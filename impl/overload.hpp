@@ -18,6 +18,18 @@ namespace smd {
             v[0]*v[0]+v[1]*v[1]+v[2]*v[2]
         );
     }
+
+    std::array<double,3> operator+=(const std::array<double,3>& lhs, const std::array<double,3>& rhs) {
+        return {lhs[0]+rhs[0], lhs[1]+rhs[1], lhs[2]+rhs[2]};
+    }
+
+    std::array<double,3> operator/(const std::array<double,3>& v, const double d) {
+        return {v[0]/d, v[1]/d, v[2]/d};
+    }
+
+    std::array<double,3> operator+(const std::array<double,3>& lhs, const std::array<double,3>& rhs) {
+        return {lhs[0] + rhs[0], lhs[1] + rhs[1], lhs[2] + rhs[2]};
+    }
 }
 
 
