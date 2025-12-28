@@ -50,7 +50,7 @@ void Simulator::run(const int loop_num, const int save_step_num, const std::stri
 }
 
 void Simulator::step() {
-    const auto [new_waters, new_soaps] = step_calculator.calc(waters, soaps);
+    const auto [new_waters, new_soaps] = step_calculator.calc(waters, soaps, random_engine);
     waters = new_waters;
     soaps = new_soaps;
 }
@@ -61,14 +61,14 @@ void Simulator::write_log(std::ofstream& out) {
 void Simulator::init_waters() {
     std::uniform_real_distribution<double> dist(-step_calculator::BOX_SIZE-10.0, step_calculator::BOX_SIZE-10.0);
     for (int water_idx = 0; water_idx < 100; ++water_idx) {
-        waters.push_back(Water(dist(random_engine), dist(random_engine)));
+        waters.push_back(Water(dist(random_engine), dist(random_engine), dist(random_engine)));
     }
 }
 
 void Simulator::init_soaps() {
     std::uniform_real_distribution<double> dist(-step_calculator::BOX_SIZE-10.0, step_calculator::BOX_SIZE-10.0);
     for (int soap_idx = 0; soap_idx < 100; ++soap_idx) {
-        soaps.push_back(Soap(dist(random_engine), dist(random_engine)));
+        soaps.push_back(Soap(dist(random_engine), dist(random_engine), dist(random_engine)));
     }
 }
 
