@@ -1,3 +1,6 @@
 *.log
 *.exe
 *.html
+log2png.py
+out_frames/
+out_exe_x2_normal/
